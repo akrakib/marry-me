@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For You ❤️</title>
+
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(to right, #ffd6e0, #ffe6f0);
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-top: 80px;
+      font-size: 40px;
+      color: #ff3366;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      margin: 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #yes {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #yes:hover {
+      transform: scale(1.1);
+    }
+
+    #no {
+      background-color: #888;
+      color: white;
+      position: absolute;
+    }
+
+    #result {
+      font-size: 25px;
+      color: #ff0066;
+      margin-top: 20px;
+    }
+
+    /* putul animation */
+    #dolls {
+      display: none;
+      font-size: 50px;
+      margin-top: 20px;
+      animation: jump 0.6s infinite alternate;
+    }
+
+    @keyframes jump {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-20px); }
+    }
+
+    /* floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Najnin, Will You Marry Me? 💍💖</h1>
+
+  <button id="yes" onclick="sayYes()">Yes 💖</button>
+  <button id="no" onmouseover="moveNo()">No 😜</button>
+
+  <h2 id="result"></h2>
+
+  <!-- cute dolls -->
+  <div id="dolls">🧸💕🧸</div>
+
+  <script>
+    function sayYes() {
+      document.getElementById("result").innerHTML =
+        "আমি জানতাম 😏💖<br>Nitur Ammu, তুমি শুধু আমারই 😍❤️";
+
+      document.getElementById("dolls").style.display = "block";
+
+      for (let i = 0; i < 30; i++) {
+        createHeart();
+      }
+    }
+
+    function moveNo() {
+      let x = Math.random() * (window.innerWidth - 100);
+      let y = Math.random() * (window.innerHeight - 50);
+
+      document.getElementById("no").style.left = x + "px";
+      document.getElementById("no").style.top = y + "px";
+    }
+
+    function createHeart() {
+      let heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 400);
+  </script>
+<h3>Design By Kabir</h3>
+</body>
+</html>
